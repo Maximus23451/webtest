@@ -1,3 +1,122 @@
+$(document).ready(function($) {
+
+    $('.brand-logo, #fp-nav, .main-content, footer').addClass('before-loading');
+
+    var onMobile = false;
+
+    if (/Android|webOS|Phone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent)) {
+        onMobile = true;
+    }
+    if ((onMobile === false)) {
+
+        var myPlayer = jQuery("#bgndVideo").YTPlayer();
+
+        $('#section0 .container-inside').addClass('container-special-ytb');
+
+        myPlayer.on("YTPStart", function() {
+
+            $(".loader").addClass('loaded');
+
+            setTimeout(function() {
+
+                $("#loading").addClass('loaded');
+
+                $(".player").mb_YTPlayer();
+
+            }, 200);
+
+            setTimeout(function() {
+
+                $(".brand-logo").removeClass('before-loading').addClass('loaded');
+
+            }, 400);
+
+            setTimeout(function() {
+
+                $("#fp-nav, .main-content").removeClass('before-loading').addClass('loaded');
+
+            }, 600);
+
+            setTimeout(function() {
+
+                $("footer").removeClass('before-loading').addClass('loaded');
+
+            }, 800);
+
+            setTimeout(function() {
+
+                $("#loading").remove();
+                $(".brand-logo, footer").addClass('after-load');
+
+            }, 1000);
+
+            setTimeout(function() {
+
+                $("#fp-nav").addClass('notransition');
+
+            }, 2200);
+
+        });
+
+        $(".slideshow").remove();
+
+    } else {
+
+        $(window).on('load', function() {
+            "use strict";
+
+            setTimeout(function() {
+
+                $(".loader").addClass('loaded');
+
+            }, 2600);
+
+            setTimeout(function() {
+
+                $("#loading").addClass('loaded');
+
+            }, 2800);
+
+            setTimeout(function() {
+
+                $(".brand-logo").removeClass('before-loading').addClass('loaded');
+
+            }, 3000);
+
+            setTimeout(function() {
+
+                $("#fp-nav, .main-content").removeClass('before-loading').addClass('loaded');
+
+            }, 3200);
+
+            setTimeout(function() {
+
+                $("footer").removeClass('before-loading').addClass('loaded');
+
+            }, 3400);
+
+            setTimeout(function() {
+
+                $("#loading").remove();
+                $(".brand-logo, footer").addClass('after-load');
+
+            }, 3600);
+
+            setTimeout(function() {
+
+                $("#fp-nav").addClass('notransition');
+
+            }, 4800);
+
+        });
+
+        $(".player-command").remove();
+
+    }
+
+});
+
+
 /*___________________________________________________________________________________________________________________________________________________
  _ jquery.mb.components                                                                                                                             _
  _                                                                                                                                                  _
